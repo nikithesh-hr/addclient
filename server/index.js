@@ -1,10 +1,10 @@
-'use strict';
+"use strict";
 
-const Glue = require('@hapi/glue');
-const mongoose = require('mongoose');
-const manifest = require('./manifest');
-require('newrelic');
-mongoose.Promise = require('bluebird');
+const Glue = require("@hapi/glue");
+const mongoose = require("mongoose");
+const manifest = require("./manifest");
+//require('newrelic');
+mongoose.Promise = require("bluebird");
 
 exports.deployment = async (start) => {
   try {
@@ -19,12 +19,11 @@ exports.deployment = async (start) => {
     await server.start();
 
     console.log(`Server started at ${server.info.uri}`);
-    
-    
+
     await mongoose.connect(process.env.MONGODB_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
-      useCreateIndex: true
+      useCreateIndex: true,
     });
 
     return server;
@@ -36,9 +35,7 @@ exports.deployment = async (start) => {
 if (!module.parent) {
   exports.deployment(true);
 
-  process.on('unhandledRejection', (err) => {
+  process.on("unhandledRejection", (err) => {
     throw err;
   });
 }
-
-

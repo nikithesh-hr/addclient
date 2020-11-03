@@ -1,21 +1,15 @@
-'use strict';
+"use strict";
 
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-mongoose.Promise = require('bluebird');
+mongoose.Promise = require("bluebird");
 const { Schema } = mongoose;
 
-const valid_types = ['text'];
-
 //Define a schema
-const schema = new Schema(
-  {
-    clientname: { type: String, required: true },
-    dateofmeeting: { type: String, required: true },
-    message: { type: String, required: true },
-  }  
-   
-);
+const schema = new Schema({
+  clientname: String,
+  dateofmeeting: String,
+  message: String,
+});
 
-
-module.exports = mongoose.model('announcements', schema);
+module.exports = mongoose.model("clientdetails", schema);
